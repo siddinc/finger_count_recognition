@@ -1,10 +1,9 @@
+from datetime import date
 from tensorflow.keras.layers import Input, Dense, Dropout, Conv2D, MaxPool2D, BatchNormalization, Flatten
 from tensorflow.keras.models import Model, load_model, save
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow import one_hot
-from datetime import date
-from .utils import preprocess_image
-
+from .constants import SAVE_MODEL_PATH, LOAD_MODEL_PATH
 
 
 def create_model(input_shape, classes):
@@ -49,8 +48,8 @@ def training_data_augmentation(x_train, y_train, batch_size):
 	train_generator = data_generator.flow(x_train, y_train, batch_size=batch_size)
 	return train_generator
 
-def train_model(model, train_generator, x_test, y_test, epochs):
-	r = model.fit_generator(train_generator, validation_data=(x_test, y_test), epochs=epochs)
+def train_model(model, train_generator, x_test, y_test, no_of_epochs):
+	r = model.fit_generator(train_generator, validation_data=(x_test, y_test), epochs=no_of_epochs)
 	return r
 
 def evaluate_model(model, x_test, y_test, batch_size):
@@ -65,5 +64,11 @@ def load_saved_model(model_name):
 	loaded_model = load_model(LOAD_MODEL_PATH + '/{}'.format(model_name))
 	return loaded_model
 
-def predict_image(model, image):
-	probabilities = model.predict(image).argmax(axis=1)
+loaded_model = load_saved_model('fingers_model.h5')
+
+def predict_image(image):
+	predicted_labels = loaded_model.predict(image)
+	result_label = predicted_labels.argmax(axis=1)[0]
+	score = max(predicted_labels[0]) * 100
+	
+	return (result_label, score)

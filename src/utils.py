@@ -1,8 +1,8 @@
-from tensorflow import one_hot
-import numpy as np
 import matplotlib.pyplot as plt
+import numpy as np
 from glob import glob
 from PIL import Image
+from tensorflow import one_hot
 from .constants import TRAIN_PATH, TEST_PATH
 
 
@@ -40,7 +40,7 @@ def preprocess_data(x_train, x_test, y_train, y_test):
 
 def preprocess_image(image):
 	np_img = np.array(image, dtype='uint8')
-	np_img = np.reshape(np_img, (128, 128, -1))
+	np_img = np.reshape(np_img, (1, 128, 128, -1))
 	np_img = np_img/np_img.max()
 	return np_img
 
@@ -58,11 +58,3 @@ def plot_metrics(r):
 # def check_missclassified_labels(predicted_labels, x_test, y_test, classes):
 # 	predicted_labels = one_hot(predicted_labels, classes)
 # 	missclassified_labels = np.where(predicted_labels != y_test)[0]
-
-# 	if len(missclassified_labels) == 0:
-#   	print("No missclassified labels")
-#     return
-
-# 	i = np.random.choice(missclassified_labels)
-#   plt.imshow(x_test[i].reshape(x_test.shape(1), x_test.shape(2)))
-#   plt.title("True label:{}   Predicted label:{}".format(y_test[i], p_test[i]))
