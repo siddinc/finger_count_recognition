@@ -21,10 +21,9 @@ def main():
             cv2.imshow("Video Feed", frame)
 
             image = utils.preprocess_image(frame)
-            print(image.shape)
 
-            # (label, score) = model_fn.predict_image(loaded_model, image)
-            # print('Predicted_label: {}  Score: {}'.format(label, score))
+            (label, score) = model_fn.predict_image(loaded_model, image)
+            print('Predicted_label: {}  Score: {}'.format(label, score))
 
             if (cv2.waitKey(1) & 0xFF) == ord("q"):
                 capture.release()

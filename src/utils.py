@@ -52,6 +52,8 @@ def preprocess_image(image):
     result_roi = cv2.morphologyEx(
         thresholded_roi, cv2.MORPH_OPEN, np.ones((5, 5), np.uint8), iterations=1)
 
+    cv2.imshow("ROI", result_roi)
+
     np_img = np.reshape(result_roi, constants.INPUT_DIM)
     np_img = np_img/np_img.max()
     return np_img
