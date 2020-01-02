@@ -1,36 +1,41 @@
 import cv2
-from .model import predict_image
-from .utils import preprocess_image
+import constants
+import model_fn
+import utils
+
+
+loaded_model = model_fn.load_saved_model('fingers_model.h5')
 
 
 def main():
-  capture = cv2.VideoCapture(0)
-  top, right, bottom, left = 70, 350, 285, 565
-    
-  while capture.isOpened():
-    try:
-      (check, frame) = capture.read()
-      frame = cv2.flip(frame, 1)
-      (height, width) = frame.shape[:2]
+    capture = cv2.VideoCapture(0)
 
-      roi = frame[top:bottom, right:left]
-      gray = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
-      gray = cv2.resize(gray, (128, 128))
+    while capture.isOpened():
+        try:
+            (check, frame) = capture.read()
+            frame = cv2.flip(frame, 1)
+            frame = cv2.resize(frame, constants.FRAME_DIM, interpolation=cv2.INTER_LINEAR)
 
-			np_gray = preprocess_image(gray)
-			(label, score) = predict_image(np_gray)
+            cv2.rectangle(frame, (constants.LEFT, constants.TOP),
+                          (constants.RIGHT, constants.BOTTOM), (0, 255, 0), 2)
+            cv2.imshow("Video Feed", frame)
 
-      cv2.rectangle(frame, (left, top), (right, bottom), (0,255,0), 2)
-      cv2.imshow("Frame", frame)
-      if (cv2.waitKey(1) & 0xFF) == ord("q"):
-        capture.release()
-        cv2.destroyAllWindows()
-        break
+            image = utils.preprocess_image(frame)
+            print(image.shape)
 
-    except(KeyboardInterrupt):
-      capture.release()
-      cv2.destroyAllWindows()
-      break
+            # (label, score) = model_fn.predict_image(loaded_model, image)
+            # print('Predicted_label: {}  Score: {}'.format(label, score))
+
+            if (cv2.waitKey(1) & 0xFF) == ord("q"):
+                capture.release()
+                cv2.destroyAllWindows()
+                break
+
+        except(KeyboardInterrupt):
+            capture.release()
+            cv2.destroyAllWindows()
+            break
+
 
 if __name__ == '__main__':
-	main()
+    main()
