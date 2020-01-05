@@ -6,11 +6,14 @@
   - **validation_accuracy = 100.00%**
 > `model1.h5` is not used in the code as it has lower training and validation accuracy than `model2.h5`
 ### Instructions to run:
-- Install [Anaconda](https://docs.anaconda.com/anaconda/install)
+- Using `anaconda`:
+  - Install [Anaconda](https://docs.anaconda.com/anaconda/install)
+  - Run `conda create --name <env_name> --file recog.yml`
+  - Run `conda activate <env_name>`
+- Using `pip`:
+  - Run `pip install -r requirements.txt`
 - `mkdir datasets` in the same directory as `src`
 - Download the [Fingers Dataset](https://www.kaggle.com/koryakinp/fingers) into `datasets`
-- Run `conda env create -f recog.yml`
-- Run `conda activate recog`
 - `cd` to `src`
 - Run `python main.py`
 
