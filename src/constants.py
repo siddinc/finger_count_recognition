@@ -1,4 +1,5 @@
 import os
+import cv2
 
 
 FRAME_DIM = (640, 480)
@@ -11,11 +12,9 @@ TRAIN_PATH = os.path.abspath('../datasets/fingers/train')
 TEST_PATH = os.path.abspath('../datasets/fingers/test')
 SAVE_MODEL_PATH = os.path.abspath('../models')
 LOAD_MODEL_PATH = os.path.abspath('../models')
-LABELS = {
-    0: 0,
-    1: 1,
-    2: 2,
-    3: 3,
-    4: 4,
-    5: 5
-}
+FONT = cv2.FONT_HERSHEY_SIMPLEX
+FONT_SCALE = 0.8
+FONT_COLOR = (0, 0, 255)
+FONT_THICKNESS = 2
+COUNT_POS = (350, 30)
+ACCURACY_POS = (350, 60)

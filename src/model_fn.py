@@ -79,5 +79,4 @@ def predict_image(model, image):
     predicted_labels = model.predict(image)
     result_label = predicted_labels.argmax(axis=1)[0]
     score = max(predicted_labels[0]) * 100
-
     return (float(result_label), float(score))
