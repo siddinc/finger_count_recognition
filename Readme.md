@@ -7,7 +7,6 @@
 > `model1.h5` is not used in the code as it has lower training and validation accuracy than `model2.h5`
 ### Instructions to run:
 - Using `anaconda`:
-  - Install [Anaconda](https://docs.anaconda.com/anaconda/install)
   - Run `conda create --name <env_name> --file recog.yml`
   - Run `conda activate <env_name>`
 - Using `pip`:
