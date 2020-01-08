@@ -1,11 +1,26 @@
 # Real-Time Finger Count Recognition
-### Tech used: TensorFlow 2.0, OpenCV3, Python 3.5
-### Trained Models:
+The goal of this project is to build and train a model which is able to count the number of fingers in real-time.
+
+## Tech used:
+- TensorFlow 2.0.0
+- OpenCV 3.1.0
+- Python 3.5.6
+
+## Dataset:
+- [Fingers Dataset](https://www.kaggle.com/koryakinp/fingers) used for training and testing
+- 21600 images of fingers of left and right hands
+- All images are 128 x 128 pixels
+- Training set: 18000 images
+- Test set: 3600 images
+> Images are centered by the center of mass with noise pattern in the background.
+
+## Trained Models:
 `model2.h5` has the following accuracy metrics:
-  - **training_accuracy = 99.62%**
-  - **validation_accuracy = 100.00%**
+  - Training accuracy = 99.62%
+  - Validation accuracy = 100.00%
 > `model1.h5` is not used in the code as it has lower training and validation accuracy than `model2.h5`
-### Instructions to run:
+
+## Instructions to run:
 - Using `anaconda`:
   - Run `conda create --name <env_name> --file recog.yml`
   - Run `conda activate <env_name>`
@@ -16,4 +31,4 @@
 - `cd` to `src`
 - Run `python main.py`
 
-> To obtain accurate results, orient your Webcam in such a way that your background is of a lighter hue; preferably white.
+> To obtain accurate results, orient your Webcam in such a way that the background inside the green box (region of interest) is of a lighter hue; preferably white.
