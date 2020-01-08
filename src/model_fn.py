@@ -1,4 +1,4 @@
-from datetime import date
+from datetime import datetime
 from tensorflow.keras.layers import Input, Dense, Dropout, Conv2D, MaxPool2D, BatchNormalization, Flatten
 from tensorflow.keras.models import Model, load_model, save_model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -64,9 +64,10 @@ def evaluate_model(model, x_test, y_test, batch_size):
 
 
 def save_model(model):
-    today = str(date.today())
+    now = datetime.now()
+    model_name_suffix = now.strftime('%d/%m/%Y-%H:%M:%S')
     model.save_model(model, constants.SAVE_MODEL_PATH +
-                     '/model${}'.format(today))
+                     '/model${}'.format(model_name_suffix))
 
 
 def load_saved_model(model_name):
