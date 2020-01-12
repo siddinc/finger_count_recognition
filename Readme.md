@@ -9,7 +9,7 @@ The goal of this project is to build and train a model which is able to count th
 ## Dataset:
 - [Fingers Dataset](https://www.kaggle.com/koryakinp/fingers) used for training and testing
 - 21600 images of fingers of left and right hands
-- All images are 128 x 128 pixels
+- All images are grayscale with dimensions 128 x 128 pixels
 - Training set: 18000 images
 - Test set: 3600 images
 > Images are centered by the center of mass with noise pattern in the background.
