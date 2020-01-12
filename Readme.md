@@ -26,7 +26,6 @@ The goal of this project is to build and train a model which is able to count th
   - Run `conda activate <env_name>`
 - Using `pip`:
   - Run `pip install -r requirements.txt`
-- `mkdir datasets` in the same directory as `src`
 - Download the [Fingers Dataset](https://www.kaggle.com/koryakinp/fingers) into `datasets`
 - `cd` to `src`
 - Run `python main.py`
