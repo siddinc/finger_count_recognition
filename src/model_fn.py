@@ -67,7 +67,7 @@ def save_model(model):
     now = datetime.now()
     model_name_suffix = now.strftime('%d/%m/%Y-%H:%M:%S')
     save_model(model, constants.SAVE_MODEL_PATH +
-                     '/model${}'.format(model_name_suffix))
+               '/model${}'.format(model_name_suffix))
 
 
 def load_saved_model(model_name):

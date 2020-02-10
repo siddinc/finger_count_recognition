@@ -12,12 +12,14 @@ The goal of this project is to build and train a model which is able to count th
 - All images are grayscale with dimensions 128 x 128 pixels
 - Training set: 18000 images
 - Test set: 3600 images
+- - Number of classes: 6
 > Images are centered by the center of mass with noise pattern in the background.
 
 ## Trained Models:
 `model2.h5` has the following accuracy metrics:
   - Training accuracy = 99.62%
   - Validation accuracy = 100.00%
+> `model1.h5` was trained for 20 epochs with a batch size of 180
 > `model1.h5` is not used in the code as it has lower training and validation accuracy than `model2.h5`
 
 ## Instructions to run:
