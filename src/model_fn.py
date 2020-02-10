@@ -66,7 +66,7 @@ def evaluate_model(model, x_test, y_test, batch_size):
 def save_model(model):
     now = datetime.now()
     model_name_suffix = now.strftime('%d/%m/%Y-%H:%M:%S')
-    model.save_model(model, constants.SAVE_MODEL_PATH +
+    save_model(model, constants.SAVE_MODEL_PATH +
                      '/model${}'.format(model_name_suffix))
 
 
