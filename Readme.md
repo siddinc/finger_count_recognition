@@ -12,7 +12,7 @@ The goal of this project is to build and train a model which is able to count th
 - All images are grayscale with dimensions 128 x 128 pixels
 - Training set: 18000 images
 - Test set: 3600 images
-- - Number of classes: 6
+- Number of classes: 6
 > Images are centered by the center of mass with noise pattern in the background.
 
 ## Trained Models:
