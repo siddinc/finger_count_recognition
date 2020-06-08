@@ -1,5 +1,5 @@
 from datetime import datetime
-from tensorflow.keras.layers import Input, Dense, Dropout, Conv2D, MaxPool2D, BatchNormalization, Flatten
+from tensorflow.keras.layers import Input, Dense, Dropout, Conv2D, MaxPooling2D, BatchNormalization, Flatten
 from tensorflow.keras.models import Model, load_model, save_model
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from tensorflow import one_hot
@@ -15,7 +15,7 @@ def create_model(input_shape, classes):
     x = Conv2D(64, (3, 3), strides=(1, 1), activation='relu')(x)
     x = BatchNormalization()(x)
 
-    x = MaxPool2D(pool_size=(4, 4))(x)
+    x = MaxPooling2D(pool_size=(4, 4))(x)
 
     x = Conv2D(128, (3, 3), strides=(1, 1), activation='relu')(x)
     x = BatchNormalization()(x)
@@ -23,7 +23,7 @@ def create_model(input_shape, classes):
     x = Conv2D(128, (3, 3), strides=(1, 1), activation='relu')(x)
     x = BatchNormalization()(x)
 
-    x = MaxPool2D(pool_size=(8, 8))(x)
+    x = MaxPooling2D(pool_size=(8, 8))(x)
 
     x = Flatten()(x)
     x = Dense(100, activation='relu')(x)
@@ -65,9 +65,9 @@ def evaluate_model(model, x_test, y_test, batch_size):
 
 def save_model(model):
     now = datetime.now()
-    model_name_suffix = now.strftime('%d/%m/%Y-%H:%M:%S')
+    model_name_suffix = now.strftime('%d-%m-%Y-%H:%M:%S')
     save_model(model, constants.SAVE_MODEL_PATH +
-               '/model${}'.format(model_name_suffix))
+               '/model${}.h5'.format(model_name_suffix))
 
 
 def load_saved_model(model_name):
