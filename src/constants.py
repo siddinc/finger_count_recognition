@@ -16,5 +16,7 @@ FONT = cv2.FONT_HERSHEY_SIMPLEX
 FONT_SCALE = 0.8
 FONT_COLOR = (0, 0, 255)
 FONT_THICKNESS = 2
+# label position on frame
 COUNT_POS = (350, 30)
+# score position on frame
 ACCURACY_POS = (350, 60)
